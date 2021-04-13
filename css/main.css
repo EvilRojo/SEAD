@@ -1,0 +1,274 @@
+/* button.hoverbtngr:hover{background-color:#04582e; }
+    button.hoverbtnyl:hover{background-color:#c7c71e; } */
+
+button{cursor: pointer;}
+
+a{text-decoration: none;
+color: inherit;}
+
+a:hover{text-decoration: none;
+color: inherit;}
+
+a.avisode{
+  font-weight: 800;
+  text-decoration: none;
+}
+
+h2.mv{text-align: left;}
+h2.quienessomos{text-align: left;}
+
+.row{width: 100%; margin: 0px}
+
+.fotter{
+  height: 132px;
+  background-color: #03783D;
+  width: 100%;
+}
+
+
+
+/* Video home full screen */
+.container-video {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  opacity: 0.01;
+  -webkit-animation: load 1.5s 0.8s ease-out forwards;
+          animation: load 1.5s 0.8s ease-out forwards;
+}
+.container-video #video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -1000;
+  overflow: hidden;
+  -webkit-transform: translate(-50%, -50%) scale(1.05);
+          transform: translate(-50%, -50%) scale(1.05);
+}
+
+@-webkit-keyframes load {
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes load {
+  100% {
+    opacity: 1;
+  }
+}
+.table-center {
+  display: table;
+  width: 100%;
+  position: relative;
+  height: 100%;
+}
+.table-center > div {
+  display: table-cell;
+  vertical-align: middle;
+  position: relative;
+  text-align: center;
+}
+.table-center > div h1 {
+  color: #fff;
+  text-shadow: 0 0px 5px rgba(0, 0, 0, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 10px;
+  font-size: 4vw;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizelegibility;
+}
+
+html,
+body {
+  height: 100%;
+
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+/* Video home full screen */
+
+/* Estilos generales */
+
+h1.general{height: auto; width: 402px; color: #03783D; font-family: Montserrat;  font-size: 36px;  font-weight: 300; line-height: 44px;}
+.pleca{width: 43px;height: 11px;  background-color: #DCDB20;}
+p.general{height: auto; width: 391px; color: #4A4A4A; font-family: Montserrat;  font-size: 16px;  font-weight: 300; line-height: 24px;}
+
+
+/* Estilos generales */
+
+
+/* home somos equidad*/
+.somos{
+  height: 800px;
+  background-color:white;}
+.somoscont{background-color: ; height: 100%; display: flex;justify-content: center;align-items: center;}
+.contsomosequidadimg{background-color: ; height: 100%; display: flex;justify-content: center;align-items: center;}
+.plecasomos{margin-bottom: 29px; margin-top: 30px}
+p.somos{margin-bottom: 72px}
+
+button.btn{ height: 34px; width: 176px; border-radius: 15px; margin-right: 10px;  background-color: #03783D; color: white;font-family: Montserrat;  font-size: 13px;  font-weight: 600;}
+
+
+
+.vinculos{
+  height: 233px;
+  background-color: #03783D;
+  width: 100%;
+  display: flex;justify-content: center;align-items: center;
+  color: white;width: 100%; margin-bottom: 30px
+}
+
+h1.vinculos{ height: 44px; width: 100%; color: #FFFFFF; font-family: Montserrat;  font-size: 36px;  font-weight: 300; line-height: 44px;  text-align: center; margin: 0px;padding: 0px}
+.contlogos{background-color: ; margin-left: 9%; margin-right: 7%; margin-top: 0px; margin-bottom: 0px; max-height: 53px; background-color: 55}
+.contlogo{ background-color:; display: flex;justify-content: center; align-items: center;margin: 0px; padding: 0px;max-height: 55px }
+.contvinculos{height: 150px; background-color: ;}
+
+
+.contarjetas{height: 800px;
+background-color: #F2F2F2;
+background-image: url();
+background-size: contain;
+background-repeat: no-repeat;
+background-position: bottom;}
+.conttarjeta1{background-color: ; padding-right: 3.5%; padding-left: 7%;display: flex;justify-content: center;align-items: center;}
+.tarjeta1{background-color: white; height: 554px;width: 460px; border-radius: 15px; padding-right: 53px; padding-left: 53px; padding-top: 103px}
+.conttarjeta2{background-color: ; padding-right: 7%; padding-left: 3.5%;display: flex;justify-content: center;align-items: center;}
+.tarjeta2{background-color: white; height: 554px;width: 460px; border-radius: 15px; padding-right: 53px; padding-left: 53px;padding-top: 103px}
+
+.conttitulotarjeta{background-color: ; height: 112px; display: flex;align-items: center;}
+h1.titulotarjeta{margin-left: 20px;height: 74px;  width: 174px; color: #03783D; font-family: Montserrat;  font-size: 30px;  line-height: 37px;}
+p.tarjeta{margin: 0px; padding: 0px;height: 72px;  color: #4A4A4A; font-family: Montserrat;  font-size: 16px;  font-weight: 300; line-height: 24px;}
+.plecatarjeta{margin-top: 20px; margin-bottom: 36px}
+.btntarjeta{margin-top: 49px}
+
+.separte{height: 233px; background-color: #03783D; }
+.separtecontgral{height: 132px;}
+h1.separte{ background-color: transparent; height: 44px; width: 386px; color: #FFFFFF; font-family: Montserrat;}
+h5.separte{background-color: transparent; height: 24px; width: 100%; color: #FFFFFF; font-family: Montserrat;  font-size: 18px;  font-weight: 300; line-height: 24px;  text-align: center;}
+.separtebtn{width: 100%; display: flex;justify-content: center;align-items: center;}
+button.comodonar{height: 34px; width: 128px; border-radius: 15px;  background-color: #DCDB20;   color: #03783D; font-family: Montserrat;  font-size: 14px;  font-weight: 500; line-height: 18px;  text-align: center;}
+
+
+
+.somos{background-color: #F9F9F9}
+.contsomosimg{background-color: ; height: 100%;display: flex;justify-content: center;align-items: center;}
+.somosconttexto{background-color: ; height: 100%; display: flex;justify-content: center;align-items: center;}
+.plecagestion{margin-bottom: 36px; margin-top: 37px}
+p.gestion{margin-bottom: 36px;}
+.contbtnsomos{justify-content: center;align-items: center;display: flex;}
+button.conocemas{ color: #03783D;height: 38px; width: 185px; border-radius: 15px;border: 0px;  background-color: #DCDB20;font-family: Montserrat; font-size: 14px;  font-weight: 500; line-height: 18px;  text-align: center;}
+
+/* home somos equidad*/
+
+
+
+
+
+
+/*contacto.html*/
+
+.contactocont{background-image: url(imgs/contacto/contacto_fondo.jpg);background-size: cover; height: 840px; padding-left: 131px;padding-right: 131px;}
+.contform{padding-top: 70px;background-color:; display: flex;justify-content: center;align-items: center; }
+.formulario{background-color: ; height: 559px; width: 450px; padding-top: 8px; background-color: }
+.titform{height: 74px;  width: 292px; color: #03783D; font-family: Montserrat;  font-size: 30px;  line-height: 37px;}
+.plecaform{margin-top: 33px; margin-bottom: 44px}
+.mapaform{background-color:; display: flex;justify-content: center;align-items: center;}
+.mapacont{background-color: ; height: 559px; width: 450px; padding-top: 52px; background-color: ; margin-top: 190px}
+.formpleca{margin-top: 15px; margin-bottom: 15px}
+p.form{height: 96px; width: 279px; color: #4A4A4A; font-family: Montserrat;  font-size: 20px;  font-weight: 300; letter-spacing: 1px;  line-height: 24px;  text-align: justify;}
+
+/*Somos.html*/
+
+
+/*aviso.html*/
+
+.avisocont{position: relative;background-image: url(../imgs/aviso/aviso.png);height: auto; background-size: cover; background-position: top; padding-left: 10%; padding-right: 10%; padding-top: 130px;}
+h1.aviso{height: 37px;  color: #03783D; font-family: Montserrat;  font-size: 30px;  line-height: 37px;}
+.plecaaviso{color: #03783D; font-family: Montserrat;  font-size: 30px;  line-height: 37px;}
+.avisotxt{margin-top: 46px;}
+p.aviso{color: #4A4A4A; font-family: Montserrat;  font-size: 14px;  font-weight: 400; line-height: 24px;}
+
+/*aviso.html*/
+
+
+/*Donar.html*/
+
+.contactocont2 {
+    background-image: url(../imgs/donar_fondo_form.png);
+    background-size: cover;
+    height: 840px;
+    padding-left: 131px;
+    padding-right: 131px;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.donarconttarjetas{background-image: url(../imgs/donar_fondo.png); background-size: ;background-repeat: no-repeat; background-position:  center 10%; min-height: 892px; max-height: 2000px; background-color:#F2F2F2}
+
+
+.donartitulos{ width: 100%;padding-top: 95px}
+h1.titulodonar{height: 88px; margin: auto; width: 433px; color: #00783E; font-family: Montserrat;  font-size: 36px;  font-weight: 300; line-height: 44px;  text-align: center;}
+h5.tutulodonar2{ height: 24px; width: 100%; margin-top: 22px;  color: #4A4A4A; font-family: 'Montserrat', sans-serif;  font-size: 18px;  font-weight: 300; line-height: 24px;  text-align: center;}
+
+.tarjetasdonar{margin-bottom: 58px}
+.contarjeta1don{background-color:height: 100%;background-color:; margin-top: 58px;  padding-right: 5%; }
+.tarjeta1don{width: 331px;height: 400px;background-color: #FFFFFF;padding-left: 22px;padding-right: 22px;padding-top: 31px; float: right;}
+.titulotarjetadon{display: flex;;align-items: center;height: 110px;}
+h1.titulotarjetadon{height: 74px;  width: 181px; color: #03783D; font-family: 'Montserrat', sans-serif;  font-size: 30px;  line-height: 37px;}
+img.donartarjeta{height: 74px;  width: 141px; color: #03783D; font-family: 'Montserrat', sans-serif;  font-size: 30px;  line-height: 37px;}
+p.datotarjeta{height: 48px; width: 309px; color: #03783D; font-family: 'Montserrat', sans-serif;  font-size: 14px;  line-height: 24px;}
+p.datotarjeta2{height: 120px; width: 309px; color: #4A4A4A; font-family: 'Montserrat', sans-serif;  font-size: 14px;  font-weight: 300; line-height: 24px;}
+
+.contarjeta2don{background-color:;height: 100%;  background-color: ; margin-top: 58px;  padding-left: 5%; }
+.tarjeta2don{width: 331px;height: 400px;background-color: #FFFFFF;padding-left: 22px;padding-right: 22px;padding-top: 31px}
+.mapaform2{background-color:; display: flex;justify-content: center;align-items: center;}
+.donarconfianza{max-width: 60%; margin: auto;ffont-family: 'Montserrat', sans-serif;font-size: 13px;  font-weight: 300; line-height: 24px;}
+.mapacont2{background-color: ; height:50px; width: 450px; padding-top: 52px; background-color: ; margin-top: 190px}
+.contdon{height: auto;}
+.contform2{padding-top: 30px}
+.formulario2{
+    background-color: ;
+    height: 46px;
+    width: 450px;
+    padding-top: 8px;
+    background-color: ;
+}
+h1.sigamos{height: 87px;  width: 345px; color: #03783D; font-family: 'Montserrat', sans-serif;  font-size: 24px;  line-height: 29px;"}
+.plecadona{margin-top: 24px; margin-bottom: 24px}
+p.adv{height: 48px; width: 336px; color: #4A4A4A; font-family: 'Montserrat', sans-serif;  font-size: 15px;  font-weight: 300; line-height: 24px;}
+img.imgcompu{height: 100px;}
+/*Donar.html*/
+
+
+
+
+
+
+
+
+
+
+.formularios{margin-top: 44px}
+.form-group {  height: 46px; width: 343px; border-radius: 15px;  background-color: #E7E7E7;}
+button.btnenv{height: 34px; width: 137px; border-radius: 15px;  background-color: #DCDB20;}
+
+
+
+
+.contenedorfotter{background-color: #03783D; height: 150px; display: flex;justify-content: center; align-items: center;}
+.txtfoo{margin-top: 0px; margin-bottom: 0px}
+.icofoo{margin-top: 0px; margin-bottom: 0px}
+h6.foot{height: 24px; width: 100%; color: #FFFFFF; font-family: Montserrat; background-color: ;  font-size: 12px;  font-weight: 500; line-height: 24px;  text-align: justify;}
+.foomg{display: flex;justify-content: right;align-items: center;}
