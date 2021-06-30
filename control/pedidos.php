@@ -1,5 +1,5 @@
 <?php
-require_once ("../modelo/Pedidos.php");
+require_once ("../modelo/pedidos.php");
 	if (isset($_POST['accion'])) {
 		$acc=$_POST['accion'];
 		switch ($acc) {
@@ -69,7 +69,7 @@ require_once ("../modelo/Pedidos.php");
        $res = $ped->delPedido($id);
 
        if ($res) {
-		header("Location: ../Admin/Pedidos.php");
+		header("Location: ../Admin/pedidos.php");
 		$ped->TerminarConexion();			
 		}
 	}
@@ -80,7 +80,7 @@ require_once ("../modelo/Pedidos.php");
 	    $res = $ped->modPedido($id,$can,$hra);
 
 	    if ($res) {
-		header("Location: ../Admin/Pedidos.php");
+		header("Location: ../Admin/pedidos.php");
 		$ped->TerminarConexion();			
 		} 	
 	}
@@ -89,7 +89,7 @@ require_once ("../modelo/Pedidos.php");
 	    $res = $ped->conPedido($id);
 
 	    if ($res) {
-		header("Location: ../Admin/Pedidos.php");
+		header("Location: ../Admin/pedidos.php");
 		$ped->TerminarConexion();			
 		} 	
 	}	

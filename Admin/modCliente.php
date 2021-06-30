@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 if ($_SESSION['autenticado'] !== TRUE) {
@@ -75,7 +74,7 @@ if ($_SESSION['autenticado'] !== TRUE) {
 					?> 
 				</div>
 				<div class="col-6">
-					<img style="border-radius:150px; color: black;" src="../resources/images/Comida-Mexicana-y-Tex-Mex.jpg" width="100%" height="100%" >
+					<img style="border-radius:150px; color: black;" src="../resources/images/pedir.jpg" width="100%" height="100%" >
 				</div>
 			</div>
 		</div>
@@ -83,7 +82,20 @@ if ($_SESSION['autenticado'] !== TRUE) {
 
 
 <!-- footer -->
-  
+      <script>
+  function comprobarnumero(){
+    tel = document.f1.num.value
+    if(tel.length <=10 && tel.length >=8){
+         document.f1.Actualizar.style.display="block"
+    }else{
+           alert("El numero de telefono debe ser de 8 o 10 digitos")
+    	   document.f1.num.value=""
+    	   document.f1.Actualizar.style.display="none";
+	}
+}
+
+
+</script>
 
    <!-- jQuery first, then Tether, then Bootstrap JS. -->
     <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>

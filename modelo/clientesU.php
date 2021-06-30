@@ -19,7 +19,7 @@ class Cliente{
 		<div class="find_title text-center"><h2>Editar a <?php echo $filas['cli_nom'];?></h2></div>
 	        <div class="col-sm-12">
                 <div class="container">
-                    <form method="post" action="../control/clientesU.php">
+                    <form method="post" name="f1" action="../control/clientesU.php">
                         <div class="panel panel-primary">
 							<br></br>
                             <div class="panel-body">
@@ -29,7 +29,7 @@ class Cliente{
                                 </div>
                                 <div class="form-group">
                                     <label for="telefono"><h4>Teléfono: </h4></label>
-                                    <input type="number" value="<?php echo $filas['cli_num'];?>" required="true" name="num" class="form-control" placeholder="Escribe su telefono"/>
+                                    <input type="number" onBlur="comprobarnumero()" pattern="^[0-9]+" value="<?php echo $filas['cli_num'];?>" required="true" name="num" class="form-control" placeholder="Escribe su telefono"/>
                                 </div>
                                 <div class="form-group">
                                     <label for="hor"><h4>Direccion </h4></label>
@@ -48,7 +48,7 @@ class Cliente{
                         </div>
                 </div>
             </div>
-                <input type="submit" name="Actualizar" class="btn btn-primary btn-lg" Value="Actualizar">
+                <input type="submit" style="display:none" name="Actualizar" class="btn btn-primary btn-lg" Value="Actualizar">
                 <input type="hidden" name="accion" value="Actualizar">
 				<input type="hidden" name="id" value="<?php echo $filas['id_cli'];?>">
 					</form>
@@ -79,6 +79,13 @@ class Cliente{
 					$_SESSION['autenticado'] = TRUE;
 					$val=1;
 				}
+			}else{
+			    $val=9;
+			    session_start();
+    			$_SESSION["id"]=0;
+    			$_SESSION['nombre']="";
+    			$_SESSION['autenticado'] =FALSE;
+    			$_SESSION["error"]=1;
 			}
 			if ($consulta) {
 				return $val;
@@ -89,7 +96,7 @@ class Cliente{
 
 		public function setCliente($nom,$num,$dir,$cor,$pas){
 			//$insertar=$this->db->query("INSERT INTO clientes(`id_cli`,`cli_nom`,`cli_num`,`cli_dir`,`cli_cor`,`cli_pas`) VALUES ('','$nom','$num','$dir','$cor','$pas')");
-		    if (!($insertar = $this->db->prepare("INSERT INTO clientes(`id_cli`,`cli_nom`,`cli_num`,`cli_dir`,`cli_cor`,`cli_pas`) VALUES ('',?,?,?,?,?)"))) {
+		    if (!($insertar = $this->db->prepare("INSERT INTO clientes(`id_cli`,`cli_nom`,`cli_num`,`cli_dir`,`cli_cor`,`cli_pas`,`cli_tip`) VALUES (null,?,?,?,?,?,0)"))) {
 				echo "Falló la preparación: (" . $mysqli->errno . ") " . $mysqli->error;
 			}
 			if (!$insertar->bind_param("sssss", $nom,$num,$dir,$cor,$pas)) {
@@ -176,15 +183,13 @@ class Pedido{
 
 		public function getPedido(){
 			$cli=$_SESSION["id"];
-			$consulta=$this->db->query("select * from Pedidos where id_cliente='$cli';");
-			
-			while ($filas=$consulta->fetch_assoc()) {
+			$consulta=$this->db->query("select * from pedidos where id_cliente='$cli'");
+		while ($filas=$consulta->fetch_assoc()) {
 				$this->Pedido[]=$filas;
 				$com=$filas['id_com'];
 				$consulta3=$this->db->query("select com_nom from comidas where id_com = '$com';");
 				
-					while($reg=mysqli_fetch_array($consulta3)){
-                
+					while($reg=$consulta3->fetch_assoc()){
 	?>
 					   <tr>
 						<td><?php echo $filas['ped_fec'];?></td>
@@ -200,15 +205,6 @@ class Pedido{
 						if($filas['estatus']=='0'){
 						?>
 						En proceso
-						<?php
-						}else{
-						?>
-						Entregado
-						<?php
-						}
-						?>
-						</td>
-						<td><input type="hidden" name="id" value="<?php echo $filas['id_ped'];?>"></td>                          
 						<td>
 							
 							<a href="../control/clientesU.php?accion=EliminarP&id=<?php echo $filas['id_ped'];?>" name="accion" value="Eliminar"><img width="32px" height="32px" src="../images/deleteAz.png">
@@ -216,6 +212,20 @@ class Pedido{
 						
 							
 						</td>
+						<?php
+						}else{
+						?>
+						Entregado
+						<td>
+						
+							
+						</td>
+						<?php
+						}
+						?>
+						</td>
+						<input type="hidden" name="id" value="<?php echo $filas['id_ped'];?>">                       
+						
 
 					   </tr>
 <?php				}
@@ -256,7 +266,7 @@ class Pedido{
 															<label for="telefono"><h4>Cantidad: </h4></label>
 														</div>
 														<div class="col-sm-6">
-															<input type="number" required="true" name="can" class="form-control" placeholder="Escribe la cantidad"/>
+															<input type="number" min="1" pattern="^[0-9]+" required="true" name="can" class="form-control" placeholder="Escribe la cantidad"/>
 														</div>
 													</div>
                                                 </div>
@@ -297,7 +307,7 @@ class Pedido{
 			session_start();
 			$cli=$_SESSION["id"];
 		    //$insertar=$this->db->query("INSERT INTO Pedidos (`id_ped`, `ped_fec`, `id_com`, `ped_can`, `id_cliente`, `ped_hra`, `estatus`) VALUES  ('','$fec','$com','$can','$cli','$hra','0')");
-		    if (!($insertar = $this->db->prepare("INSERT INTO Pedidos (`id_ped`, `ped_fec`, `id_com`, `ped_can`, `id_cliente`, `ped_hra`, `estatus`) VALUES  ('','$fec',?,?,?,'$hra','0')"))) {
+		    if (!($insertar = $this->db->prepare("INSERT INTO pedidos (`id_ped`, `ped_fec`, `id_com`, `ped_can`, `id_cliente`, `ped_hra`, `estatus`) VALUES  (null,'$fec',?,?,?,'$hra','0')"))) {
 				echo "Falló la preparación: (" . $mysqli->errno . ") " . $mysqli->error;
 			}
 			if (!$insertar->bind_param("iii",$com,$can,$cli)) {
@@ -318,7 +328,7 @@ class Pedido{
 		public function delPedido($id){
 
 			//$eliminar=$this->db->query("delete from Pedidos where id_ped='$id'");
-			if (!($eliminar = $this->db->prepare("delete from Pedidos where id_ped= ?"))) {
+			if (!($eliminar = $this->db->prepare("delete from pedidos where id_ped= ?"))) {
 				echo "Falló la preparación: (" . $mysqli->errno . ") " . $mysqli->error;
 			}
 			if (!$eliminar->bind_param("i",$id)) {

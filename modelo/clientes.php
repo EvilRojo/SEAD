@@ -32,12 +32,12 @@ class Cliente{
                    		<?php
 						if($filas['cli_tip']=='1'){
 						?>
-						<a href="../Admin/modCLiente.php?id=<?php echo $filas['id_cli'];?>"><img width="32px" height="32px" src="../images/editA.png">
+						<a href="../Admin/modCliente.php?id=<?php echo $filas['id_cli'];?>"><img width="32px" height="32px" src="../images/editA.png">
                    		</a>
 						<?php
 						}else{
 						?>
-                   		<a href="../Admin/modCLiente.php?id=<?php echo $filas['id_cli'];?>"><img width="32px" height="32px" src="../images/editA.png">
+                   		<a href="modCliente.php?id=<?php echo $filas['id_cli'];?>"><img width="32px" height="32px" src="../images/editA.png">
                    		</a>
                    		
                    		<a href="../control/clientes.php?accion=Eliminar&id=<?php echo $filas['id_cli'];?>" name="accion" value="Eliminar"><img width="32px" height="32px" src="../images/deleteAz.png">
@@ -63,7 +63,7 @@ class Cliente{
 	  <div class="find_title text-center"><h2>Editar a <?php echo $filas['cli_nom'];?></h2></div>
 	                        <div class="col-sm-12">
                                 <div class="container">
-                                    <form method="post" action="../control/clientes.php">
+                                    <form method="post" name="f1" action="../control/clientes.php">
                                         <div class="panel panel-primary">
                                             <br></br>
                                             <div class="panel-body">
@@ -74,7 +74,7 @@ class Cliente{
                                                 
                                                 <div class="form-group">
                                                     <label for="telefono"><h4>Teléfono: </h4></label>
-                                                    <input type="text" required="true" name="num" class="form-control" placeholder="Escribe su telefono" value="<?php echo $filas['cli_num'];?>"/>
+                                                    <input type="number" onBlur="comprobarnumero()" pattern="^[0-9]+" required="true" name="num" class="form-control" placeholder="Escribe su telefono" value="<?php echo $filas['cli_num'];?>"/>
                                                 </div>
                                                 
                                                 <div class="form-group">
@@ -95,7 +95,7 @@ class Cliente{
                                         </div>
                                 </div>
                             </div>
-                            		    <input type="submit" name="Actualizar" class="btn btn-primary btn-lg" Value="Actualizar">
+                            		    <input type="submit" name="Actualizar" style="display:none" class="btn btn-primary btn-lg" Value="Actualizar">
                             			<input type="hidden" name="accion" value="Actualizar">
 										<input type="hidden" name="id" value="<?php echo $filas['id_cli'];?>">
 									</form>
@@ -106,8 +106,8 @@ class Cliente{
 		}
 
 		public function setCliente($nom,$num,$dir,$cor,$pas){
-		    //$insertar=$this->db->query("INSERT INTO clientes(`id_cli`,`cli_nom`,`cli_num`,`cli_dir`,`cli_cor`,`cli_pas`) VALUES ('','$nom','$num','$dir','$cor','$pas')");
-		    if (!($insertar = $this->db->prepare("INSERT INTO clientes(`id_cli`,`cli_nom`,`cli_num`,`cli_dir`,`cli_cor`,`cli_pas`) VALUES ('',?,?,?,?,?)"))) {
+		    //$insertar=$this->db->query("INSERT INTO clientes(`id_cli`,`cli_nom`,`cli_num`,`cli_dir`,`cli_cor`,`cli_pas`,`cli_tip`) VALUES ('','$nom','$num','$dir','$cor','$pas')");
+		    if (!($insertar = $this->db->prepare("INSERT INTO clientes(`id_cli`,`cli_nom`,`cli_num`,`cli_dir`,`cli_cor`,`cli_pas`,`cli_tip`) VALUES (null,?,?,?,?,?,0)"))) {
 				echo "Falló la preparación: (" . $mysqli->errno . ") " . $mysqli->error;
 			}
 			if (!$insertar->bind_param("sssss", $nom,$num,$dir,$cor,$pas)) {

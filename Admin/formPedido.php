@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 if ($_SESSION['autenticado'] !== TRUE) {
@@ -63,8 +62,8 @@ if ($_SESSION['autenticado'] !== TRUE) {
       </nav>
 	  <br><br><br><br><br>
 	  <?php 
-			require_once("../modelo/Pedidos.php");
-			require_once('../control/Pedidos.php');
+			require_once("../modelo/pedidos.php");
+			require_once('../control/pedidos.php');
 			$ped=new pedido();
 			echo mostrarFormRegistro($ped);
 		?> 

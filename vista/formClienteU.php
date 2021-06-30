@@ -65,7 +65,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-6">
-					<img style="border-radius:150px; color: black;" src="../resources/images/Comida-Mexicana-y-Tex-Mex.jpg" width="100%" height="100%" >
+					<img style="border-radius:150px; color: black;" src="../resources/images/registro.jpg" width="100%" height="100%" >
 				</div>
 				<div class="col-6">
 					<div class="row">
@@ -83,11 +83,11 @@
 										</div>
 										<div class="form-group">
 											<label for="telefono"><h4>Teléfono: </h4></label>
-											<input type="number" required="true" name="num" class="form-control" placeholder="Escribe su telefono"/>
+											<input type="number" min="10" onBlur="comprobarnumero()" pattern="^[0-9]+" maxlength="10" required="true" name="num" class="form-control" placeholder="Escribe su telefono"/>
 										</div>
 										<div class="form-group">
 											<label for="hor"><h4>Direccion </h4></label>
-											<textarea type="textarea" rows="10" cols="40" class="form-control" required="true" name="dir" placeholder="Escribe la direccion del usuario"></textarea>
+											<textarea type="textarea" rows="5" cols="40" class="form-control" required="true" name="dir" placeholder="Escribe la direccion del usuario"></textarea>
 										</div>
 										<div class="form-group">
 											<label for="telefono"><h4>Correo electronico: </h4></label>
@@ -125,19 +125,30 @@
 
 <!-- footer -->
   <script>
+  function comprobarnumero(){
+    tel = document.f1.num.value
+    if(tel.length <=10 && tel.length >=8){
+        
+    }else{
+           alert("El numero de telefono debe ser de 8 o 10 digitos")
+    	   document.f1.num.value=""
+    	   document.f1.Agregar.style.display="none";
+	}
+}
     function comprobarClave(){
     clave1 = document.f1.pas.value
     clave2 = document.f1.pas1.value
-
-    if (clave1 == clave2){
-       //alert("Las dos claves son iguales...\nRealizaríamos las acciones del caso positivo")
-	   document.f1.Agregar.style.display="block";
-    }else{
-       alert("Las dos contraseñas no coinciden")
-	   document.f1.pas.value=""
-	   document.f1.pas1.value=""
-	   document.f1.Agregar.style.display="none";
-	}
+   
+        if (clave1 == clave2) {
+           //alert("Las dos claves son iguales...\nRealizaríamos las acciones del caso positivo")
+    	   document.f1.Agregar.style.display="block";
+        }else{
+           alert("Las dos contraseñas no coinciden")
+    	   document.f1.pas.value=""
+    	   document.f1.pas1.value=""
+    	   document.f1.Agregar.style.display="none";
+    	}
+    
 }
 
 </script>

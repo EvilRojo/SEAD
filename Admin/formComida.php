@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 if ($_SESSION['autenticado'] !== TRUE) {
@@ -63,7 +62,7 @@ if ($_SESSION['autenticado'] !== TRUE) {
       </nav>
 	  <br><br><br><br><br>
 	  <center>
-	  <div class="find_title text-center"><h2>Formulario de Registro de Comidas</h2></div>
+	  <div class="find_title text-center"><h2>Registrar Comida</h2></div>
 	                        <div class="col-sm-6">
                                 <div class="container">
                                     <form method="post" action="../control/comidas.php">
@@ -77,7 +76,7 @@ if ($_SESSION['autenticado'] !== TRUE) {
                                                 
                                                 <div class="form-group">
                                                     <label for="telefono"><h4>Precio: </h4></label>
-                                                    <input type="number" required="true" name="pre" class="form-control" placeholder="Escribe el precio"/>
+                                                    <input type="number" min="1" pattern="^[0-9]+" required="true" name="pre" class="form-control" placeholder="Escribe el precio"/>
                                                 </div>
                                                 
                                                 <div class="form-group">

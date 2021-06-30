@@ -26,7 +26,7 @@ class Comida{
                    	                      
                    	<td width="120px">
                    		
-                   		<a href="../Admin/modcomida.php?id=<?php echo $filas['id_com'];?>"><img width="32px" height="32px" src="../images/editA.png">
+                   		<a href="modComida.php?id=<?php echo $filas['id_com'];?>"><img width="32px" height="32px" src="../images/editA.png">
                    		</a>
                    		
                    		<a href="../control/comidas.php?accion=Eliminar&id=<?php echo $filas['id_com'];?>" name="accion" value="Eliminar"><img width="32px" height="32px" src="../images/deleteAz.png">
@@ -60,7 +60,7 @@ class Comida{
                                                 
                                                 <div class="form-group">
                                                     <label for="telefono"><h4>Precio: </h4></label>
-                                                    <input type="number" value="<?php echo $filas['com_pre'];?>" required="true" name="pre" class="form-control" placeholder="Escribe el precio"/>
+                                                    <input type="number" min="1" pattern="^[0-9]+" value="<?php echo $filas['com_pre'];?>" required="true" name="pre" class="form-control" placeholder="Escribe el precio"/>
                                                 </div>
                                                 
                                                 <div class="form-group">
@@ -84,7 +84,7 @@ class Comida{
 		public function setcomida($nom,$des,$pre){
 		    
 		    //$insertar=$this->db->query("INSERT INTO comidas(`id_com`,`com_nom`,`com_des`,`com_pre`) VALUES ('','$nom','$des','$pre')");
-		    if (!($insertar = $this->db->prepare("INSERT INTO comidas(`id_com`,`com_nom`,`com_des`,`com_pre`) VALUES ('',?,?,?)"))) {
+		    if (!($insertar = $this->db->prepare("INSERT INTO comidas(`id_com`,`com_nom`,`com_des`,`com_pre`) VALUES (null,?,?,?)"))) {
 				echo "Falló la preparación: (" . $mysqli->errno . ") " . $mysqli->error;
 			}
 			if (!$insertar->bind_param("ssd", $nom,$des,$pre)) {

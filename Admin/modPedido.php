@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 if ($_SESSION['autenticado'] !== TRUE) {
@@ -75,7 +74,7 @@ if ($_SESSION['autenticado'] !== TRUE) {
 					?> 
 				</div>
 				<div class="col-6">
-					<img style="border-radius:150px; color: black;" src="../resources/images/Comida-Mexicana-y-Tex-Mex.jpg" width="100%" height="100%" >
+					<img style="border-radius:150px; color: black;" src="../resources/images/datos.jpg" width="100%" height="100%" >
 				</div>
 			</div>
 		</div>

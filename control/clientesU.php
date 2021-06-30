@@ -54,9 +54,17 @@ require_once ("../modelo/clientesU.php");
 			header('Location: ../vista/indexU.php');
 			$cli->TerminarConexion();			
 		}else{
-			header('Location: ../Admin/indexA.php');
-			$cli->TerminarConexion();
+		    if ($res==1) {
+    			header('Location: ../Admin/indexA.php');
+    			$cli->TerminarConexion();
+		
+		    }else{
+		     if($res==9){
+		         header('Location: ../vista/inicio.html?est=error');
+		     }   
+		    } 
 		}
+		
 	}
 	
 	function insertarCliente($cli){		

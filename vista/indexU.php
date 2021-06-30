@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 if ($_SESSION['autenticado'] !== TRUE) {
@@ -6,8 +5,13 @@ if ($_SESSION['autenticado'] !== TRUE) {
 	
 }else{
 	if (isset($_SESSION['nombre'])) {
+        //asignar a variable
         $nom = $_SESSION['nombre'];
-        $n = htmlspecialchars($nom);
+        //asegurar que no tenga "", <, > o &
+        $n = htmlspecialchars($nom);       
+
+        //usarla donde quieras
+        
 	}else{
 		$n='error';
 	}

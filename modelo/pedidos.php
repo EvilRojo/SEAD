@@ -12,14 +12,14 @@ class pedido{
 		}
 
 		public function getPedido(){
-			$consulta=$this->db->query("select * from Pedidos ORDER BY ped_fec DESC;;");
-			while ($filas=$consulta->fetch_assoc()) {
+			$consulta=$this->db->query("select * from pedidos ORDER BY ped_fec DESC;;");
+			while ($filas=mysqli_fetch_array($consulta)) {
 				$this->Pedido[]=$filas;
 				$id=$filas['id_cliente'];
 				$idC=$filas['id_com'];
 				$consulta2=$this->db->query("select * from clientes where id_cli = '$id';");
+				$consulta3=$this->db->query("select com_nom from comidas where id_com = '$idC';");
 				while($rag=mysqli_fetch_array($consulta2)){
-					$consulta3=$this->db->query("select com_nom from comidas where id_com = '$idC';");
 					while($reg=mysqli_fetch_array($consulta3)){
 ?>
 					   <tr>
@@ -39,15 +39,15 @@ class pedido{
 						<?php
 						if($filas['estatus']=='0'){
 						?>
-						Confirmar<a href="../control/Pedidos.php?accion=Confirmar&id=<?php echo $filas['id_ped'];?>" name="accion" value="Confirmar"><img width="32px" height="32px" src="../images/check.png">
+						Confirmar<a href="../control/pedidos.php?accion=Confirmar&id=<?php echo $filas['id_ped'];?>" name="accion" value="Confirmar"><img width="32px" height="32px" src="../images/check.png">
 						</td>
 						<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
 						<td>
 							
-							<a href="../Admin/modPedido.php?id=<?php echo $filas['id_ped'];?>"><img width="32px" height="32px" src="../images/editA.png">
+							<a href="modPedido.php?id=<?php echo $filas['id_ped'];?>"><img width="32px" height="32px" src="../images/editA.png">
 							</a>
 							
-							<a href="../control/Pedidos.php?accion=Eliminar&id=<?php echo $filas['id_ped'];?>" name="accion" value="Eliminar"><img width="32px" height="32px" src="../images/deleteAz.png">
+							<a href="../control/pedidos.php?accion=Eliminar&id=<?php echo $filas['id_ped'];?>" name="accion" value="Eliminar"><img width="32px" height="32px" src="../images/deleteAz.png">
 							</a>
 						
 							
@@ -80,7 +80,7 @@ class pedido{
 		}
 		
 		public function getFormPedido($id){
-			$consulta=$this->db->query("select * from Pedidos where id_ped = '$id';");
+			$consulta=$this->db->query("select * from pedidos where id_ped = '$id';");
 			if ($filas=$consulta->fetch_assoc()) {
 				$this->Pedido[]=$filas;
 				$id=$filas['id_cliente'];
@@ -94,7 +94,7 @@ class pedido{
 	  <div class="find_title text-center"><h2>Editar pedido</h2></div>
 	                        <div class="col-sm-12">
                                 <div class="container">
-                                    <form method="post" action="../control/Pedidos.php">
+                                    <form method="post" action="../control/pedidos.php">
                                         <div class="panel panel-primary">
                                             <br></br>
 											<div class="panel-body">
@@ -114,7 +114,7 @@ class pedido{
 												
                                                 <div class="form-group">
                                                     <label for="telefono"><h4>Cantidad: </h4></label>
-                                                    <input value="<?php echo $filas['ped_can'];?>" type="number" required="true" name="can" class="form-control" placeholder="Escribe la cantidad"/>
+                                                    <input value="<?php echo $filas['ped_can'];?>" type="number"  min="1" pattern="^[0-9]+" required="true" name="can" class="form-control" placeholder="Escribe la cantidad"/>
                                                 </div>
 												
 												<div class="form-group">
@@ -147,7 +147,7 @@ class pedido{
 	  <div class="find_title text-center"><h2>Formulario de Registro de Pedidos</h2></div>
 	                        <div class="col-sm-6">
                                 <div class="container">
-                                    <form method="post" action="../control/Pedidos.php">
+                                    <form method="post" action="../control/pedidos.php">
                                         <div class="panel panel-primary">
                                             <br></br>
                                             <div class="panel-body">
@@ -165,7 +165,7 @@ class pedido{
                                                 
                                                 <div class="form-group">
                                                     <label for="telefono"><h4>Cantidad: </h4></label>
-                                                    <input type="number" required="true" name="can" class="form-control" placeholder="Escribe la cantidad"/>
+                                                    <input type="number" min="1" pattern="^[0-9]+" required="true" name="can" class="form-control" placeholder="Escribe la cantidad"/>
                                                 </div>
                                                 
                                                 <div class="form-group">
@@ -200,7 +200,7 @@ class pedido{
 
 		public function setPedido($fec,$com,$can,$cli,$hra){
 		    //$insertar=$this->db->query("INSERT INTO Pedidos (`id_ped`, `ped_fec`, `id_com`, `ped_can`, `id_cliente`, `ped_hra`, `estatus`) VALUES  ('','$fec','$com','$can','$cli','$hra','0')");
-			if (!($modificar = $this->db->prepare("INSERT INTO Pedidos (`id_ped`, `ped_fec`, `id_com`, `ped_can`, `id_cliente`, `ped_hra`, `estatus`) VALUES  ('','$fec',?,?,?,'$hra','0')"))) {
+			if (!($modificar = $this->db->prepare("INSERT INTO pedidos (`id_ped`, `ped_fec`, `id_com`, `ped_can`, `id_cliente`, `ped_hra`, `estatus`) VALUES  (null,'$fec',?,?,?,'$hra','0')"))) {
 				echo "Falló la preparación: (" . $mysqli->errno . ") " . $mysqli->error;
 			}
 			if (!$modificar->bind_param("iii",$com,$can,$cli)) {
@@ -221,7 +221,7 @@ class pedido{
 		public function delPedido($id){
 
 			//$eliminar=$this->db->query("delete from Pedidos where id_ped='$id'");
-			if (!($eliminar = $this->db->prepare("delete from Pedidos where id_ped= ?"))) {
+			if (!($eliminar = $this->db->prepare("delete from pedidos where id_ped= ?"))) {
 				echo "Falló la preparación: (" . $mysqli->errno . ") " . $mysqli->error;
 			}
 			if (!$eliminar->bind_param("i",$id)) {
@@ -241,7 +241,7 @@ class pedido{
 		public function modPedido($id,$can,$hra){
 
 			//$modificar=$this->db->query("UPDATE Pedidos SET ped_can='$can',ped_hra='$hra' where id_ped='$id'");
-			if (!($modificar = $this->db->prepare("UPDATE Pedidos SET ped_can=?,ped_hra='$hra' where id_ped=?"))) {
+			if (!($modificar = $this->db->prepare("UPDATE pedidos SET ped_can=?,ped_hra='$hra' where id_ped=?"))) {
 				echo "Falló la preparación: (" . $mysqli->errno . ") " . $mysqli->error;
 			}
 			if (!$modificar->bind_param("ii",$can,$id)) {
@@ -260,7 +260,7 @@ class pedido{
 
 		public function conPedido($id){
 			
-			$modificar=$this->db->query("UPDATE Pedidos SET estatus= '1' where id_ped='$id'");
+			$modificar=$this->db->query("UPDATE pedidos SET estatus= '1' where id_ped='$id'");
 			if($modificar) {
 				return true;
 			}else{

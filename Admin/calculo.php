@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 if ($_SESSION['autenticado'] !== TRUE) {
@@ -63,10 +62,11 @@ if ($_SESSION['autenticado'] !== TRUE) {
       </nav>
 <!--body--><br><br><br><br><br><br><br><br><br><br>
 		<center>
+		    <h1>Calcular ganancias</h1><br><br><br>
 		<table align="center" border=0px bgcolor=#E3DAC9 >
 		
             <tr style="color:blue;">
-                <td align="center"><b><p style = "font-family:courier,arial,helvética;">Cual fue la inversion total en la comida?</p></b></td>
+                <td align="center"><b><p style = "font-family:courier,arial,helvética;">Inversion total</p></b></td>
                 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                 <td align="center"><b>$<input type="number" id="inv" required></b></td>
             </tr>
@@ -74,7 +74,7 @@ if ($_SESSION['autenticado'] !== TRUE) {
                 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
             </tr>
 			<tr style="color:blue;">
-                <td align="center"><b><p style = "font-family:courier,arial,helvética;">Cual fue la ganancia total por la comida?</p></b></td>
+                <td align="center"><b><p style = "font-family:courier,arial,helvética;">Ganancia total por las unidades</p></b></td>
                 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                 <td align="center"><b>$<input type="number" id="gan" required></b></td>
             </tr>
@@ -82,9 +82,9 @@ if ($_SESSION['autenticado'] !== TRUE) {
                 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
             </tr>
 			<tr style="color:blue;">
-                <td align="center"><b><p style = "font-family:courier,arial,helvética;">Cuantos platos vendio?</p></b></td>
+                <td align="center"><b><p style = "font-family:courier,arial,helvética;">Unidades vendidas</p></b></td>
 				 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                <td align="center"><b><input type="number" id="num" required></b></td>
+                <td align="center"><b><input  type="number" id="num" required></b></td>
             </tr>
             <tr style="color:blue;">
                 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
@@ -122,18 +122,29 @@ if ($_SESSION['autenticado'] !== TRUE) {
 <script>
     
     document.querySelector('#calcular2').addEventListener('click', () =>{
+        var valoresAceptados = /^[0-9]+$/;
         const inv = parseInt(document.querySelector('#inv').value);
         const gan = parseInt(document.querySelector('#gan').value);
 		const num = parseInt(document.querySelector('#num').value);
-        let r;
-		let e;
-		let t;
-		r=(gan/num);
-		e=inv/r;
-		t=e*2;
-        document.querySelector('#r2').innerHTML = "Por cada plato ganaste "+r;
-		document.querySelector('#r3').innerHTML = "Para recuperar la inversion, debiste vender:"+e;
-		document.querySelector('#r4').innerHTML = "Para tener una ganancia de %50 debiste vender:"+t;
+
+		if(inv>0 && gan>0 && num>0){
+            let r;
+    		let e;
+    		let t;
+    		r=(gan/num).toFixed(1);
+    		e=(inv/r).toFixed(1);
+    		t=(e*2).toFixed(1);
+    
+            document.querySelector('#r2').innerHTML = "Por cada plato ganaste $"+r;
+    		document.querySelector('#r3').innerHTML = "Para recuperar la inversion, debiste vender: "+e+" unidades";
+    		document.querySelector('#r4').innerHTML = "Para tener una ganancia de %50 debiste vender: "+t+" unidades";
+		}else{
+		    alert("Datos incorrectos, por favor verifique sus datos");
+		    document.querySelector('#inv').value="";
+		    document.querySelector('#gan').value="";
+		    document.querySelector('#num').value="";
+		}
+    
     });
 
 </script>

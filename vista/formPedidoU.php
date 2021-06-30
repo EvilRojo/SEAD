@@ -84,7 +84,7 @@ if ($_SESSION['autenticado'] !== TRUE) {
 					?> 
 				</div>
 				<div class="col-sm-6">
-					<img style="border-radius:150px; color: black;" src="../resources/images/Comida-Mexicana-y-Tex-Mex.jpg" width="120%" height="120%" >
+					<img style="border-radius:150px; color: black;" src="../resources/images/pedir.jpg" width="120%" height="120%" >
 				</div>
 			</div>
 		</div>

@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 if ($_SESSION['autenticado'] !== TRUE) {
@@ -66,7 +65,7 @@ if ($_SESSION['autenticado'] !== TRUE) {
 	  <div class="find_title text-center"><h2>Formulario de Clientes</h2></div>
 	                        <div class="col-sm-6">
                                 <div class="container">
-                                    <form method="post" action="../control/clientes.php">
+                                    <form method="post" name="f1" action="../control/clientes.php">
                                         <div class="panel panel-primary">
                                             <br></br>
                                             <div class="panel-body">
@@ -77,7 +76,7 @@ if ($_SESSION['autenticado'] !== TRUE) {
                                                 
                                                 <div class="form-group">
                                                     <label for="telefono"><h4>Teléfono: </h4></label>
-                                                    <input type="text" required="true" name="num" class="form-control" placeholder="Escribe su telefono"/>
+                                                    <input type="text" onBlur="comprobarnumero()" pattern="^[0-9]+" required="true" name="num" class="form-control" placeholder="Escribe su telefono"/>
                                                 </div>
                                                 
                                                 <div class="form-group">
@@ -97,14 +96,27 @@ if ($_SESSION['autenticado'] !== TRUE) {
                                         </div>
                                 </div>
                             </div>
-                            		    <input type="submit" name="Agregar" class="btn btn-primary btn-lg" Value="Agregar">
+                            		    <input type="submit" style="display:none" name="Agregar" class="btn btn-primary btn-lg" Value="Agregar">
                             			<input type="hidden" name="accion" value="Agregar">
 									</form>
 							</center>
 
 
 <!-- footer -->
-  
+    <script>
+  function comprobarnumero(){
+    tel = document.f1.num.value
+    if(tel.length <=10 && tel.length >=8){
+         document.f1.Agregar.style.display="block"
+    }else{
+           alert("El numero de telefono debe ser de 8 o 10 digitos")
+    	   document.f1.num.value=""
+    	   document.f1.Agregar.style.display="none";
+	}
+}
+
+
+</script>
 
    <!-- jQuery first, then Tether, then Bootstrap JS. -->
     <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>

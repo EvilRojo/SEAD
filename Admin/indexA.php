@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 if ($_SESSION['autenticado'] !== TRUE) {
@@ -74,12 +73,45 @@ if ($_SESSION['autenticado'] !== TRUE) {
         <div class="clear"></div>
       </nav>
 	  <div>
-	  <br><br><br><br><br><br><br><br><br><br>
-		<?php echo "<p>¡Hola $n!</p>"; ?>
-   <!--  <img src="../resources/images/Comida-Mexicana-y-Tex-Mex.jpg" width="100%" height="100%" >-->
-    
-	</div>
+	  <br><br><br><br><br><br><br>
 
+    <div class="container">
+			<div class="row">
+				<div class="col-sm-12">
+					<H2><?php echo "<p>¡Hola $n!</p>"; ?></H2>
+					<br>
+				</div>
+			</div>
+			<div class="row align-items-center">
+				<div class="col-sm-5">
+					<div class="row">
+						<div class="col-10">
+							<table border=0px bgcolor=#E3DAC9 >
+                                <tr style="color:blue;">
+                                    <td colspan="3" align="center" width="100px"><H1><b>Menu del dia</b></H1></td>
+                                </tr>
+                                <tr >
+									<output style="color:lightblue;" > 
+										<?php 
+											require_once("../modelo/clientesU.php");
+											require_once('../control/clientesU.php');
+											$com=new comida();
+											echo mostrarComidas($com);
+										?> 
+									</output>
+								</tr>  
+							</table>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-2 ">
+					<input onclick="location.href='pedidos.php'" id="iniciaSesion" type="button" class="btn btn-success" accesskey="I" value="Administrar pedidos"><br><br>
+				</div>
+				<div class="col-sm-5 justify-content-end">
+					<img style="border-radius:150px; color: black;" src="../resources/images/Comida-Mexicana-y-Tex-Mex.jpg" width="120%" height="120%" >
+				</div>
+			</div>
+		</div>
 
 
 
